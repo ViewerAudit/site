@@ -42,37 +42,6 @@ A powerful web application that detects viewbotters on Twitch and Kick by analyz
 - **Comparison Charts**: Side-by-side analysis
 - **Real-Time Charts**: Live updating visualizations
 
-## 🚀 Quick Start
-
-### Prerequisites
-- Modern web browser (Chrome, Firefox, Safari, Edge)
-- No installation required - runs entirely in the browser
-
-### Live Demo
-Visit the live application: [Viewer Audit](https://your-username.github.io/ViewerAudit)
-
-### Local Development
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-username/ViewerAudit.git
-   cd ViewerAudit
-   ```
-
-2. **Open in browser**
-   ```bash
-   # Using Python (if installed)
-   python -m http.server 8000
-   
-   # Using Node.js (if installed)
-   npx serve .
-   
-   # Or simply open index.html in your browser
-   ```
-
-3. **Access the application**
-   - Navigate to `http://localhost:8000` (if using server)
-   - Or open `index.html` directly in your browser
 
 ## 🛠️ Technology Stack
 
@@ -107,14 +76,6 @@ The application is fully responsive and optimized for:
 ### API Credentials
 The application uses the following API credentials:
 
-**Twitch API:**
-- Client ID: `m3y8neekuu7dcjzb9tluw4zwwmxcuj`
-- Secret: `355k5929537n9hal9gbnz2sjzvjwt3`
-
-**Kick API:**
-- Client ID: `01JVJNAY16ZC1ZPSE511C7EJFY`
-- Secret: `f4f97e275e9a4a85b51101ed3986d723f0486d33abc7ed982790688f4b2086b2`
-
 ### Customization
 You can customize the application by modifying:
 - `css/main.css` - Main styling
@@ -141,9 +102,6 @@ You can customize the application by modifying:
    - Choose branch: "gh-pages"
    - Save
 
-3. **Automatic Deployment**
-   - The GitHub Actions workflow will automatically deploy on push
-   - Your site will be available at: `https://your-username.github.io/ViewerAudit`
 
 ### Other Hosting Options
 
@@ -219,9 +177,3 @@ The application is actively maintained and updated with:
 - Bug fixes and optimizations
 - Platform API updates
 - Security enhancements
-
----
-
-**Made with ❤️ for the streaming community**
-
-*Viewer Audit - Detect viewbotters, protect the community* 
