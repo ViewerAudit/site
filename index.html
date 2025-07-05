@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viewer Audit - Detect Viewbotters on Twitch & Kick</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='28' fill='%2323263a'/><ellipse cx='32' cy='32' rx='18' ry='12' fill='%23fff'/><circle cx='32' cy='32' r='6' fill='%236366f1'/><path d='M25 38 l5 5 l9-9' fill='none' stroke='%2310b981' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" class="logo-svg">
+                    <circle cx="20" cy="20" r="18" fill="#6366f1" stroke="#4f46e5" stroke-width="2"/>
+                    <path d="M12 20 L18 26 L28 14" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="20" cy="20" r="8" fill="none" stroke="white" stroke-width="2" opacity="0.3"/>
+                </svg>
+                <h1>Viewer Audit</h1>
+            </div>
+            <nav class="nav">
+                <a href="#" class="nav-link active" data-page="home">Home</a>
+                <a href="#" class="nav-link" data-page="about">About</a>
+                <a href="#" class="nav-link" data-page="faq">FAQ</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Home Page -->
+        <div id="home-page" class="page active">
+            <div class="container">
+                <!-- Hero Section -->
+                <section class="hero">
+                    <h2>Detect Viewbotters on Twitch & Kick</h2>
+                    <p>Analyze viewer engagement and get botting likelihood scores in real-time</p>
+                </section>
+
+                <!-- Search Section -->
+                <section class="search-section">
+                    <div class="search-container">
+                        <div class="platform-toggle">
+                            <button class="platform-btn active" data-platform="twitch">
+                                <img src="twitch.png" alt="Twitch" class="platform-icon">
+                                Twitch
+                            </button>
+                            <button class="platform-btn" data-platform="kick">
+                                <img src="kick.png" alt="Kick" class="platform-icon">
+                                Kick
+                            </button>
+                        </div>
+                        
+                        <div class="search-box">
+                            <input type="text" id="search-input" placeholder="Search for a channel or paste URL..." class="search-input">
+                            <button id="search-btn" class="search-btn">
+                                <svg width="20" height="20" viewBox="0 0 20 20" class="search-icon">
+                                    <path d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" fill="currentColor"/>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <div id="search-suggestions" class="search-suggestions"></div>
+                    </div>
+                </section>
+
+                <!-- Recent Searches -->
+                <section class="recent-searches" id="recent-searches">
+                    <h3>Recent Searches</h3>
+                    <div class="recent-list" id="recent-list"></div>
+                </section>
+
+                <!-- Results Section -->
+                <section class="results-section" id="results-section" style="display: none;">
+                    <div class="results-container">
+                        <div class="results-header">
+                            <h3>Channel Analysis</h3>
+                            <div class="results-actions">
+                                <button class="action-btn heart-btn" id="heart-btn">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" class="heart-icon">
+                                        <path d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                                <button class="action-btn share-btn" id="share-btn">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" class="share-icon">
+                                        <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="channel-info" id="channel-info">
+                            <!-- Channel data will be populated here -->
+                        </div>
+                        
+                        <div class="metrics-grid" id="metrics-grid">
+                            <!-- Metrics will be populated here -->
+                        </div>
+                        
+                        <div class="botting-analysis" id="botting-analysis">
+                            <!-- Botting analysis will be populated here -->
+                        </div>
+                        
+                        <div class="charts-section" id="charts-section">
+                            <!-- Charts will be populated here -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Favorites Section -->
+                <!-- Removed: Favorites feature -->
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div id="about-page" class="page">
+            <div class="container">
+                <h2>About Viewer Audit</h2>
+                <div class="about-content">
+                    <p>Viewer Audit is a powerful tool designed to help identify potential viewbotting on streaming platforms like Twitch and Kick. Our advanced algorithms analyze multiple engagement metrics to provide accurate botting likelihood scores.</p>
+                    
+                    <h3>How It Works</h3>
+                    <p>We analyze various metrics including viewer-to-chatter ratios, engagement patterns, follower counts, and chat activity to determine the likelihood of viewbotting. Our system compares these metrics against normal patterns to identify suspicious activity.</p>
+                    
+                    <h3>Metrics Analyzed</h3>
+                    <ul>
+                        <li>Live viewer count vs active chatters</li>
+                        <li>Chat message rate and quality</li>
+                        <li>Follower-to-viewer ratios</li>
+                        <li>Stream duration patterns</li>
+                        <li>Engagement consistency</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Page -->
+        <div id="faq-page" class="page">
+            <div class="container">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-content">
+                    <div class="faq-item">
+                        <h3>How accurate is the botting detection?</h3>
+                        <p>Our algorithm analyzes multiple factors and provides a likelihood score. While highly accurate, it should be used as a tool for investigation rather than definitive proof.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>What data do you collect?</h3>
+                        <p>We only collect publicly available streaming data. No personal information is stored, and favorites are saved locally on your device.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>Can I compare channels across platforms?</h3>
+                        <p>Yes! You can compare Twitch and Kick channels side by side to analyze differences in engagement patterns.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>How often is the data updated?</h3>
+                        <p>Data is updated in real-time as you search. We pull live data from the platforms' APIs to ensure accuracy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <svg width="50" height="50" viewBox="0 0 50 50" class="spinner">
+                <circle cx="25" cy="25" r="20" fill="none" stroke="#6366f1" stroke-width="4" stroke-dasharray="31.416" stroke-dashoffset="31.416">
+                    <animate attributeName="stroke-dasharray" dur="2s" values="0 31.416;15.708 15.708;0 31.416" repeatCount="indefinite"/>
+                    <animate attributeName="stroke-dashoffset" dur="2s" values="0;-15.708;-31.416" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+            <p>Analyzing channel...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html> 
